@@ -1,0 +1,31 @@
+---
+import SearchBarClient from "./SearchBarClient.jsx";
+---
+
+<div class="search-wrapper">
+  <SearchBarClient client:load />
+</div>
+
+<style>
+.search-wrapper {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .search-wrapper {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    width: auto;
+    max-width: none;
+    margin: 28px 16px 0;
+  }
+}
+</style>

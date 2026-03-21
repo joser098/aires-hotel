@@ -1,0 +1,32 @@
+---
+const { title, image, guests, beds } = Astro.props;
+---
+
+<div class="room-card">
+  <img src={image} alt={title} />
+  <div class="content">
+    <h3>{title}</h3>
+    <p>{guests} Personas • {beds} Camas</p>
+  </div>
+</div>
+
+<style>
+.room-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  transition: 0.3s ease;
+}
+.room-card:hover {
+  transform: translateY(-10px);
+}
+img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+.content {
+  padding: 20px;
+}
+</style>

@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+import RoomDetailPage from "../components/RoomDetailPage.astro";
+import { rooms } from "../data/rooms.js";
+
+const featuredRoom = rooms[0];
+const relatedRooms = rooms.slice(1, 4).map((room) => ({
+  title: room.title,
+  image: room.heroImage,
+  guests: room.guests,
+  beds: room.beds,
+  href: `/habitaciones/${room.slug}`
+}));
+---
+
+<BaseLayout title="Habitaciones | Aires Express Hotel">
+  <Navbar />
+  <RoomDetailPage
+    eyebrow={featuredRoom.eyebrow}
+    title={featuredRoom.title}
+    heroImage={featuredRoom.heroImage}
+    gallery={featuredRoom.gallery}
+    description={featuredRoom.description}
+    services={featuredRoom.services}
+    relatedRooms={relatedRooms}
+  />
+  <Footer />
+</BaseLayout>

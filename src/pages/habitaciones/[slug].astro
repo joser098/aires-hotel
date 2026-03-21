@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Footer from "../../components/Footer.astro";
+import Navbar from "../../components/Navbar.astro";
+import RoomDetailPage from "../../components/RoomDetailPage.astro";
+import { rooms } from "../../data/rooms.js";
+
+export function getStaticPaths() {
+  return rooms.map((room) => ({
+    params: { slug: room.slug },
+    props: {
+      room,
+      relatedRooms: rooms
+        .filter((candidate) => candidate.slug !== room.slug)
+        .slice(0, 3)
+        .map((candidate) => ({
+          title: candidate.title,
+          image: candidate.heroImage,
+          guests: candidate.guests,
+          beds: candidate.beds,
+          href: `/habitaciones/${candidate.slug}`
+        }))
+    }
+  }));
+}
+
+const { room, relatedRooms } = Astro.props;
+---
+
+<BaseLayout title={`${room.title} | Aires Express Hotel`}>
+  <Navbar />
+  <RoomDetailPage
+    eyebrow={room.eyebrow}
+    title={room.title}
+    heroImage={room.heroImage}
+    gallery={room.gallery}
+    description={room.description}
+    services={room.services}
+    relatedRooms={relatedRooms}
+  />
+  <Footer />
+</BaseLayout>
