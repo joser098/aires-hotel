@@ -15,7 +15,20 @@ const relatedRooms = rooms.slice(1, 4).map((room) => ({
 }));
 ---
 
-<BaseLayout title="Habitaciones | Aires Express Hotel">
+<BaseLayout
+  title="Habitaciones | Aires Express Hotel"
+  description="Descubrí las habitaciones de Aires Express Hotel: opciones single, dobles, triples y cuádruple para tu estadía en Buenos Aires."
+  keywords={[
+    "habitaciones hotel",
+    "habitacion single",
+    "habitacion doble",
+    "habitacion triple",
+    "hotel en Buenos Aires"
+  ]}
+  canonicalPath="/habitaciones"
+  image={featuredRoom.heroImage}
+  imageAlt={`Habitaciones en Aires Express Hotel`}
+>
   <Navbar />
   <RoomDetailPage
     eyebrow={featuredRoom.eyebrow}

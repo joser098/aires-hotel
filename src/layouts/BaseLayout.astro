@@ -1,7 +1,78 @@
 ---
 import { ClientRouter } from "astro:transitions";
 
-const { title = "Aires Express Hotel" } = Astro.props;
+const defaultTitle = "Aires Express Hotel | Hotel en Buenos Aires";
+const defaultDescription =
+  "Aires Express Hotel en Buenos Aires. Habitaciones cómodas, ubicación estratégica y contacto directo por WhatsApp para tu reserva.";
+const defaultImage = "/images/Logo1080x1080.png";
+const defaultKeywords = [
+  "Aires Express Hotel",
+  "hotel en Buenos Aires",
+  "alojamiento en CABA",
+  "habitaciones en Buenos Aires",
+  "hotel céntrico"
+];
+
+const {
+  title = defaultTitle,
+  description = defaultDescription,
+  image = defaultImage,
+  imageAlt = "Aires Express Hotel",
+  keywords = defaultKeywords,
+  canonicalPath = Astro.url.pathname,
+  type = "website",
+  robots = "index, follow",
+  noindex = false,
+  structuredData
+} = Astro.props;
+
+const siteUrl = Astro.site ? new URL(Astro.site) : null;
+const resolvedCanonical = canonicalPath
+  ? siteUrl
+    ? new URL(canonicalPath, siteUrl).toString()
+    : canonicalPath
+  : null;
+const resolvedImage = siteUrl ? new URL(image, siteUrl).toString() : image;
+const resolvedPageUrl = resolvedCanonical && resolvedCanonical.startsWith("http")
+  ? resolvedCanonical
+  : null;
+const robotsContent = noindex ? "noindex, nofollow" : robots;
+const keywordContent = Array.isArray(keywords) ? keywords.join(", ") : keywords;
+
+const hotelSchema = {
+  "@context": "https://schema.org",
+  "@type": "Hotel",
+  name: "Aires Express Hotel",
+  description,
+  image: [resolvedImage],
+  telephone: "+54 11 3456 7898",
+  email: "airesexpress@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Bartolomé Mitre 3410",
+    addressLocality: "Cdad. Autónoma de Buenos Aires",
+    addressRegion: "Buenos Aires",
+    addressCountry: "AR"
+  },
+  sameAs: ["https://www.instagram.com/hotel_airesexpress"],
+  ...(resolvedPageUrl ? { url: resolvedPageUrl } : {})
+};
+
+const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Aires Express Hotel",
+  description,
+  ...(siteUrl ? { url: siteUrl.toString() } : {})
+};
+
+const customStructuredData = Array.isArray(structuredData)
+  ? structuredData
+  : structuredData
+    ? [structuredData]
+    : [];
+
+const jsonLdEntries = [webSiteSchema, hotelSchema, ...customStructuredData];
 ---
 
 <!DOCTYPE html>
@@ -9,7 +80,40 @@ const { title = "Aires Express Hotel" } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywordContent} />
+    <meta name="robots" content={robotsContent} />
+    <meta name="author" content="Aires Express Hotel" />
+    <meta name="theme-color" content="#ef476f" />
+    <meta name="format-detection" content="telephone=yes" />
+
     <title>{title}</title>
+
+    {resolvedCanonical && <link rel="canonical" href={resolvedCanonical} />}
+
+    <meta property="og:site_name" content="Aires Express Hotel" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={resolvedImage} />
+    <meta property="og:image:alt" content={imageAlt} />
+    {resolvedPageUrl && <meta property="og:url" content={resolvedPageUrl} />}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={resolvedImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/images/Logo1080x1080.png" />
+
+    {jsonLdEntries.map((entry) => (
+      <script type="application/ld+json" set:html={JSON.stringify(entry)} />
+    ))}
+
     <ClientRouter />
   </head>
   <body>

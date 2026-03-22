@@ -25,9 +25,39 @@ export function getStaticPaths() {
 }
 
 const { room, relatedRooms } = Astro.props;
+const roomDescription = room.description?.[0] ?? "Habitación en Aires Express Hotel.";
+const roomSchema = {
+  "@context": "https://schema.org",
+  "@type": "HotelRoom",
+  name: room.title,
+  description: roomDescription,
+  bed: room.beds,
+  occupancy: {
+    "@type": "QuantitativeValue",
+    maxValue: room.guests
+  },
+  amenityFeature: room.services.map((service) => ({
+    "@type": "LocationFeatureSpecification",
+    name: service,
+    value: true
+  }))
+};
 ---
 
-<BaseLayout title={`${room.title} | Aires Express Hotel`}>
+<BaseLayout
+  title={`${room.title} | Aires Express Hotel`}
+  description={roomDescription}
+  keywords={[
+    room.title,
+    "Aires Express Hotel",
+    "habitaciones en Buenos Aires",
+    "hotel en CABA"
+  ]}
+  canonicalPath={`/habitaciones/${room.slug}`}
+  image={room.heroImage}
+  imageAlt={`${room.title} en Aires Express Hotel`}
+  structuredData={roomSchema}
+>
   <Navbar />
   <RoomDetailPage
     eyebrow={room.eyebrow}

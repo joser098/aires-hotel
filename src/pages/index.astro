@@ -9,7 +9,20 @@ import FAQSection from "../components/FAQSection.astro";
 import Footer from "../components/Footer.astro";
 ---
 
-<BaseLayout>
+<BaseLayout
+  title="Aires Express Hotel | Hotel en Buenos Aires"
+  description="Reservá en Aires Express Hotel y disfrutá una estadía cómoda en Buenos Aires, con habitaciones funcionales y atención directa."
+  keywords={[
+    "Aires Express Hotel",
+    "hotel en Buenos Aires",
+    "alojamiento en CABA",
+    "reservas de hotel",
+    "habitaciones en Buenos Aires"
+  ]}
+  canonicalPath="/"
+  image="/images/obelisco.png"
+  imageAlt="Vista de Buenos Aires desde Aires Express Hotel"
+>
   <Navbar />
   <Hero/>
   <RoomsSection />
