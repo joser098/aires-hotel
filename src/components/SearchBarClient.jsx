@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { DayPicker } from "react-day-picker";
 import { es } from "date-fns/locale";
-import "react-day-picker/dist/style.css";
+import "react-day-picker/style.css";
 import { Calendar, Users, BedDouble, Search } from "lucide-react";
 
 export default function SearchBarClient() {
@@ -59,7 +59,7 @@ export default function SearchBarClient() {
         onClick={() => setOpen(open === "dates" ? null : "dates")}
       >
         <Calendar className="icon" color="#777" />
-        <div style={{display: "flex", flexDirection: "column"}}>
+        <div className="search-field-content">
           <span className="label">Fechas</span>
           <span className="value">
             {range?.from
@@ -78,6 +78,7 @@ export default function SearchBarClient() {
                 selected={range}
                 onSelect={setRange}
                 max={50}
+                disabled={{ before: new Date() }}
                 numberOfMonths={1}
                 locale={es}
               />
@@ -91,7 +92,7 @@ export default function SearchBarClient() {
         onClick={() => setOpen(open === "people" ? null : "people")}
       >
         <Users className="icon" color="#777" />
-        <div style={{display: "flex", flexDirection: "column"}}>
+        <div className="search-field-content">
           <span className="label">Personas</span>
           <span className="value">
             {adults} Adultos · {children} Niños
@@ -134,7 +135,7 @@ export default function SearchBarClient() {
         onClick={() => setOpen(open === "rooms" ? null : "rooms")}
       >
         <BedDouble className="icon" color="#777"/>
-        <div style={{display: "flex", flexDirection: "column"}}>
+        <div className="search-field-content">
           <span className="label">Habitaciones</span>
           <span className="value">{getRoomSummary()}</span>
 

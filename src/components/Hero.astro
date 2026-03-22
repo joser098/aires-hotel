@@ -17,12 +17,14 @@ import SearchBar from "./SearchBar.astro";
 <style>
 .hero {
   position: relative;
-  min-height: 640px;
+  min-height: clamp(560px, 86vh, 760px);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 120px 0 96px;
+  padding: clamp(120px, 17vw, 170px) 0 clamp(112px, 12vw, 150px);
   box-sizing: border-box;
-
+  isolation: isolate;
+  justify-content: center;
   background-image: url("/images/obelisco.png");
   background-size: cover;
   background-position: center;
@@ -38,16 +40,18 @@ import SearchBar from "./SearchBar.astro";
 .hero-content {
   display: flex;
   flex-direction: column;
+  gap: 14px;
   align-items: start;
   justify-content: center;
-  max-width: 600px;
+  max-width: min(640px, 100%);
   color: white;
 }
 
 .hero-content p {
-  margin: 14px 0 0;
-  font-size: clamp(16px, 2vw, 22px);
-  line-height: 1.5;
+  margin: 0;
+  font-size: clamp(18px, 2.2vw, 24px);
+  line-height: 1.4;
+  max-width: 34ch;
 }
 
 .hero::after {
@@ -62,15 +66,29 @@ import SearchBar from "./SearchBar.astro";
 }
 
 .hero-content h1 {
-  font-size: 3rem;
   margin: 0;
+  font-size: clamp(38px, 6vw, 64px);
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    min-height: clamp(520px, 80vh, 680px);
+    padding: 116px 0 112px;
+  }
+
+  .hero-content {
+    max-width: 560px;
+  }
 }
 
 @media (max-width: 768px) {
   .hero {
     min-height: auto;
-    padding: 104px 0 32px;
+    padding: 104px 0 28px;
     align-items: flex-start;
+    background-position: 62% center;
   }
 
   .hero-content {
@@ -79,13 +97,31 @@ import SearchBar from "./SearchBar.astro";
   }
 
   .hero-content h1 {
-    font-size: clamp(34px, 10vw, 48px);
+    font-size: clamp(32px, 11vw, 48px);
     line-height: 1.05;
   }
 
   .hero-content p {
     font-size: 16px;
-    max-width: 28ch;
+    max-width: 30ch;
+  }
+
+  .hero::after {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.62),
+      rgba(0, 0, 0, 0.28)
+    );
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 96px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(30px, 11.5vw, 40px);
   }
 }
 </style>
