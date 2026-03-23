@@ -21,7 +21,7 @@ export const rooms = [
       "Guardar equipaje"
     ],
     guests: 1,
-    beds: "1 cama"
+    beds: "1 Cama"
   },
   {
     slug: "doble-twin",
@@ -45,12 +45,12 @@ export const rooms = [
       "Guardar equipaje"
     ],
     guests: 2,
-    beds: "2 camas"
+    beds: "2 Camas"
   },
   {
     slug: "doble-matrimonial",
     eyebrow: "Aires Express",
-    title: "Habitacion Doble Matrimonial",
+    title: "Habitacion Matrimonial",
     heroImage: "/images/rooms/room.png",
     gallery: Array(6).fill("/images/rooms/room.png"),
     description: [
@@ -69,7 +69,7 @@ export const rooms = [
       "Guardar equipaje"
     ],
     guests: 2,
-    beds: "1 cama matrimonial"
+    beds: "1 Cama matrimonial"
   },
   {
     slug: "triple-twin",
@@ -93,7 +93,7 @@ export const rooms = [
       "Guardar equipaje"
     ],
     guests: 3,
-    beds: "3 camas"
+    beds: "3 Camas"
   },
   {
     slug: "triple-matrimonial",
@@ -117,7 +117,7 @@ export const rooms = [
       "Guardar equipaje"
     ],
     guests: 3,
-    beds: "1 cama matrimonial y 1 cama"
+    beds: "1 Cama matrimonial y 1 Individual"
   },
   {
     slug: "cuadruple",
@@ -141,7 +141,31 @@ export const rooms = [
       "Guardar equipaje"
     ],
     guests: 4,
-    beds: "4 plazas"
+    beds: "1 Matrimonial y 2 Individual"
+  },
+  {
+    slug: "monoambiente",
+    eyebrow: "Aires Express",
+    title: "Monoambiente",
+    heroImage: "/images/rooms/room.png",
+    gallery: Array(6).fill("/images/rooms/room.png"),
+    description: [
+      "La Monoambiente es una opcion para aquellos que prefieren un ambiente simple y confortable, pero que no quieren tener que preocuparse por la funcionalidad.",
+      "Su diseño es pensado para acomodar una estadia corta o viajes de trabajo, con una buena distribucion y un ambiente acogedor.",
+      "Es una opcion ideal para aquellos que prefieren un ambiente simple y confortable, pero que no quieren tener que preocuparse por la funcionalidad."
+    ],
+    services: [
+      "Wi-Fi",
+      "TV por cable",
+      "Aire acondicionado",
+      "Bano privado",
+      "Recepcion 24h",
+      "Ropa blanca",
+      "Desayuno",
+      "Guardar equipaje"
+    ],
+    guests: 4,
+    beds: "1 Matrimonial y 2 Individual"
   }
 ];
 

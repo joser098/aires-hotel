@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 export default function RoomGallery({ images = [], title = "Habitacion" }) {
   const galleryImages = images.length > 0 ? images : ["/images/rooms/room.png"];
+  const hasMultiple = galleryImages.length > 1;
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -57,7 +58,7 @@ export default function RoomGallery({ images = [], title = "Habitacion" }) {
 
   return (
     <>
-      <div className="room-gallery">
+      <div className="room-gallery gallery-desktop">
         <div className="gallery-grid">
           <button
             type="button"
@@ -95,6 +96,48 @@ export default function RoomGallery({ images = [], title = "Habitacion" }) {
             ))}
           </div>
         )}
+      </div>
+
+      <div className="room-gallery gallery-mobile">
+        <div className="mobile-gallery-stage">
+          <button
+            type="button"
+            className="mobile-gallery-arrow left"
+            onClick={goToPrevious}
+            aria-label="Imagen anterior"
+            disabled={!hasMultiple}
+          >
+            <ChevronLeft size={28} strokeWidth={2.2} />
+          </button>
+
+          <button
+            type="button"
+            className="mobile-gallery-image-button"
+            onClick={() => setIsOpen(true)}
+            aria-label="Abrir galeria completa"
+          >
+            <img
+              key={`mobile-${selectedIndex}`}
+              src={galleryImages[selectedIndex]}
+              alt={`${title} imagen ${selectedIndex + 1}`}
+              className="mobile-gallery-image"
+            />
+          </button>
+
+          <button
+            type="button"
+            className="mobile-gallery-arrow right"
+            onClick={goToNext}
+            aria-label="Imagen siguiente"
+            disabled={!hasMultiple}
+          >
+            <ChevronRight size={28} strokeWidth={2.2} />
+          </button>
+
+          <span className="mobile-gallery-counter">
+            {selectedIndex + 1}/{galleryImages.length}
+          </span>
+        </div>
       </div>
 
       {isOpen && (
