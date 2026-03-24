@@ -1,0 +1,66 @@
+---
+import { MessageCircle } from "lucide-react";
+
+const {
+  phone = "5491140480054",
+  message = "Hola, quiero reservar una habitacion en Aires Express Hotel. Me comparten disponibilidad y tarifas, por favor?"
+} = Astro.props;
+
+const encodedMessage = encodeURIComponent(message);
+const whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`;
+---
+
+<a
+  class="floating-whatsapp"
+  href={whatsappUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Contactar por WhatsApp"
+>
+  <MessageCircle size={22} />
+  <span>WhatsApp</span>
+</a>
+
+<style>
+  .floating-whatsapp {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 35;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 999px;
+    padding: 12px 16px;
+    background: #25d366;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 14px 30px rgba(37, 211, 102, 0.38);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  }
+
+  .floating-whatsapp:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 18px 34px rgba(37, 211, 102, 0.45);
+    filter: saturate(1.05);
+  }
+
+  .floating-whatsapp:active {
+    transform: translateY(0);
+  }
+
+  .floating-whatsapp span {
+    line-height: 1;
+  }
+
+  @media (max-width: 768px) {
+    .floating-whatsapp {
+      right: 14px;
+      bottom: 14px;
+      padding: 11px 14px;
+      font-size: 13px;
+      gap: 6px;
+    }
+  }
+</style>

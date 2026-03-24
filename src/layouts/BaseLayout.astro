@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from "astro:transitions";
+import FloatingWhatsAppButton from "../components/FloatingWhatsAppButton.astro";
 
 const defaultTitle = "Aires Express Hotel | Hotel en Buenos Aires";
 const defaultDescription =
@@ -45,7 +46,7 @@ const hotelSchema = {
   name: "Aires Express Hotel",
   description,
   image: [resolvedImage],
-  telephone: "+54 11 3456 7898",
+  telephone: "+54 9 11 4048-0054",
   email: "airesexpress@gmail.com",
   address: {
     "@type": "PostalAddress",
@@ -118,6 +119,7 @@ const jsonLdEntries = [webSiteSchema, hotelSchema, ...customStructuredData];
   </head>
   <body>
     <slot />
+    <FloatingWhatsAppButton />
   </body>
 </html>
 

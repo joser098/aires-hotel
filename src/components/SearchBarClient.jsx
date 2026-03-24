@@ -17,7 +17,7 @@ export default function SearchBarClient() {
     { name: "Triple Matrimonial", desc: "Camas Matrimoniales", count: 0 },
     { name: "Cuádruple", desc: "Preguntar...", count: 0 }
   ]);
-  const phone = "5491123456789";
+  const phone = "5491140480054";
 
   const handleSearch = () => {
     const selectedRooms = roomTypes
