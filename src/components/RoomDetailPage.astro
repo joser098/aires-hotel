@@ -47,7 +47,7 @@ const galleryImages = gallery.length > 0
         </section>
 
         <section class="description-section">
-          {description.map((paragraph) => (
+          {description.map((paragraph: any) => (
             <p>{paragraph}</p>
           ))}
         </section>
@@ -55,7 +55,7 @@ const galleryImages = gallery.length > 0
         <section class="services-section">
           <h2>Servicios de Aires Express</h2>
           <div class="services-grid">
-            {services.map((service) => (
+            {services.map((service: any) => (
               <span class="service-chip">{service}</span>
             ))}
           </div>
@@ -74,7 +74,7 @@ const galleryImages = gallery.length > 0
         <section class="related-section">
           <h2>Otras habitaciones</h2>
           <div class="related-grid">
-            {relatedRooms.map((room) => (
+            {relatedRooms.map((room: any) => (
               <RoomPreviewCard
                 href={room.href ?? "/habitaciones"}
                 title={room.title}
@@ -286,6 +286,7 @@ const galleryImages = gallery.length > 0
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   :global(.gallery-close) {
@@ -598,24 +599,39 @@ const galleryImages = gallery.length > 0
     }
 
     :global(.gallery-stage) {
-      grid-template-columns: 46px minmax(0, 1fr) 46px;
-      gap: 8px;
+      display: block;
+      position: relative;
     }
 
     :global(.gallery-arrow) {
       width: 46px;
       height: 46px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+    }
+
+    :global(.gallery-arrow.left) {
+      left: 8px;
+    }
+
+    :global(.gallery-arrow.right) {
+      right: 8px;
     }
 
     :global(.gallery-preview) {
-      width: min(96vw, 980px);
-      max-height: calc(100vh - 170px);
+      width: 100%;
+      max-width: none;
+      max-height: calc(100vh - 185px);
     }
 
     :global(.gallery-filmstrip) {
-      justify-content: flex-start;
+      justify-content: center;
       gap: 8px;
       margin-top: 10px;
+      padding-left: 0;
+      padding-right: 0;
     }
 
     :global(.film-thumb) {
