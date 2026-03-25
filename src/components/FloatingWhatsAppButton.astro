@@ -3,7 +3,7 @@ import { MessageCircle } from "lucide-react";
 
 const {
   phone = "5491140480054",
-  message = "Hola, quiero reservar una habitacion en Aires Express Hotel. Me comparten disponibilidad y tarifas, por favor?"
+  message = "Hola, vengo desde la web y me gustaría reservar una habitación en Aires Express Hotel. ¿Podrían ayudarme con disponibilidad?"
 } = Astro.props;
 
 const encodedMessage = encodeURIComponent(message);
@@ -18,7 +18,7 @@ const whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`;
   aria-label="Contactar por WhatsApp"
 >
   <MessageCircle size={22} />
-  <span>WhatsApp</span>
+  <span>Reservá ahora</span>
 </a>
 
 <style>
