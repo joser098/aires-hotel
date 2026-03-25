@@ -38,7 +38,6 @@ export default function RoomsCarousel() {
 
   return (
     <section className="rooms-carousel">
-      <h2 className="section-title">Habitaciones</h2>
       <div className="carousel-mobile-hint" aria-hidden="true">
         <ChevronLeft size={16} />
         <span>Desliza para ver mas</span>
@@ -61,9 +60,10 @@ export default function RoomsCarousel() {
                   href={`/habitaciones/${room.slug}`}
                   title={room.title}
                   image={room.heroImage}
-                  description={room.description[0]}
-                  people={`${room.guests} ${room.guests === 1 ? "persona" : "personas"}`}
-                  beds={room.beds}
+                  short_description={room.short_description}
+                  people={room.guests}
+                  singleBeds={room.singleBeds}
+                  doubleBeds={room.doubleBeds}
                 />
               </div>
             ))}

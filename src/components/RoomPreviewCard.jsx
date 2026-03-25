@@ -1,12 +1,13 @@
-import { BedDouble, Users } from "lucide-react";
+import { BedDouble, BedSingle,  Users } from "lucide-react";
 
 export default function RoomPreviewCard({
   href = "#",
   title,
   image,
-  description,
+  short_description,
   people,
-  beds
+  singleBeds,
+  doubleBeds
 }) {
   return (
     <a href={href} className="room-preview-card">
@@ -15,8 +16,8 @@ export default function RoomPreviewCard({
       <div className="room-preview-body">
         <h3 className="room-preview-title">{title}</h3>
 
-        {description ? (
-          <p className="room-preview-description">{description}</p>
+        {short_description ? (
+          <p className="room-preview-description">{short_description}</p>
         ) : null}
 
         <div className="room-preview-meta">
@@ -25,10 +26,31 @@ export default function RoomPreviewCard({
             {people}
           </span>
 
-          <span className="room-preview-meta-item">
+          {
+            singleBeds ? (
+              <span className="room-preview-meta-item">
+                <BedSingle size={16} />
+                {singleBeds}
+              </span>
+            ) : null
+          }
+          {
+            doubleBeds ? (
+              <span className="room-preview-meta-item">
+                <BedDouble size={16} />
+                {doubleBeds}
+              </span>
+            ) : null
+          }
+          {/* <span className="room-preview-meta-item">
             <BedDouble size={16} />
             {beds}
           </span>
+
+          <span className="room-preview-meta-item">
+            <BedDouble size={16} />
+            {beds}
+          </span> */}
         </div>
       </div>
     </a>
