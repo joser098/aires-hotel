@@ -2,6 +2,7 @@
 import SearchBar from "./SearchBar.astro";
 import RoomGallery from "./RoomGallery.jsx";
 import RoomPreviewCard from "./RoomPreviewCard.jsx";
+import { rooms } from "../data/rooms.js";
 
 const {
   eyebrow = "Aires Express",
@@ -32,7 +33,6 @@ const galleryImages = gallery.length > 0
         <img src={heroImage} alt={title} class="hero-image" />
         <div class="hero-overlay"></div>
         <div class="hero-copy">
-          <span>{eyebrow}</span>
           <h1>{title}</h1>
         </div>
       </div>
@@ -74,14 +74,15 @@ const galleryImages = gallery.length > 0
         <section class="related-section">
           <h2>Otras habitaciones</h2>
           <div class="related-grid">
-            {relatedRooms.map((room: any) => (
+            {rooms.filter((room: any) => room.title !== title).slice(0, 3).map((room: any) => (
               <RoomPreviewCard
-                href={room.href ?? "/habitaciones"}
+                href={`/habitaciones/${room.slug}`}
                 title={room.title}
-                image={room.image}
-                description={room.description}
-                people={room.guests === 1 ? "1 persona" : `${room.guests} personas`}
-                beds={room.beds}
+                image={room.heroImage}
+                short_description={room.short_description}
+                people={room.guests}
+                singleBeds={room.singleBeds}
+                doubleBeds={room.doubleBeds}
               />
             ))}
           </div>
@@ -495,6 +496,10 @@ const galleryImages = gallery.length > 0
     margin-bottom: 0;
   }
 
+  .related-section {
+    margin-top: 100px;
+  } 
+
   .services-section h2,
   .booking-header h2,
   .related-section h2 {
@@ -525,7 +530,7 @@ const galleryImages = gallery.length > 0
 
   .booking-bar {
     position: relative;
-    min-height: 128px;
+    min-height: 20px;
     margin-top: 24px;
     padding-top: 12px;
   }
