@@ -187,7 +187,7 @@ export const rooms = [
   {
     slug: "cuadruple",
     eyebrow: "Aires Express",
-    title: "Cuadruplex",
+    title: "Cuadruple",
     heroImage: getHeroImage("cuadruple"),
     gallery: getRoomGallery("cuadruple"),
     short_description: "Habitación para 4 personas con cama matrimonial y dos camas individuales y baño privado.",
