@@ -6,6 +6,10 @@ const roomImages = {
     "/images/rooms/single/2.jpeg",
     "/images/rooms/single/3.jpeg"
   ],
+  "doble-twin": [
+    "/images/rooms/doble-twin/1.jpeg",
+    "/images/rooms/doble-twin/2.jpeg",
+  ],
   "triple-twin": [
     "/images/rooms/triple-twin/1.jpeg",
     "/images/rooms/triple-twin/2.jpeg",
