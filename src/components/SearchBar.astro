@@ -1,9 +1,18 @@
 ---
 import SearchBarClient from "./SearchBarClient.jsx";
+
+const {
+  initialRoomSlug = "",
+  initialAdults = 2
+} = Astro.props;
 ---
 
 <div class="search-wrapper">
-  <SearchBarClient client:load />
+  <SearchBarClient
+    client:load
+    initialRoomSlug={initialRoomSlug}
+    initialAdults={initialAdults}
+  />
 </div>
 
 <style>

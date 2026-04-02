@@ -1,23 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DayPicker } from "react-day-picker";
 import { es } from "date-fns/locale";
 import "react-day-picker/style.css";
 import { Calendar, Users, BedDouble, Search } from "lucide-react";
 
-export default function SearchBarClient() {
+const baseRoomTypes = [
+  { slug: "single", name: "Single", desc: "Cama Individual" },
+  { slug: "doble-twin", name: "Doble Twin", desc: "Camas Individuales" },
+  { slug: "doble-matrimonial", name: "Matrimonial", desc: "Cama Matrimonial" },
+  { slug: "triple-twin", name: "Triple Twin", desc: "Camas Individuales" },
+  { slug: "triple-matrimonial", name: "Triple Matrimonial", desc: "Cama Matrimonial + Individual" },
+  { slug: "cuadruple", name: "Cuádruple", desc: "Matrimonial + 2 individuales" },
+  { slug: "monoambiente", name: "Monoambiente", desc: "Monoambiente equipado" }
+];
+
+const createRoomTypes = (initialRoomSlug) => {
+  const selectedSlug = initialRoomSlug || "single";
+
+  return baseRoomTypes.map((room) => ({
+    ...room,
+    count: room.slug === selectedSlug ? 1 : 0
+  }));
+};
+
+export default function SearchBarClient({
+  initialRoomSlug = "",
+  initialAdults = 2
+}) {
   const [open, setOpen] = useState(null);
   const [range, setRange] = useState();
-  const [adults, setAdults] = useState(2);
+  const [adults, setAdults] = useState(Math.max(1, initialAdults));
   const [children, setChildren] = useState(0);
-  const [roomTypes, setRoomTypes] = useState([
-    { name: "Single", desc: "Cama Individual", count: 1 },
-    { name: "Doble Twin", desc: "Camas Individuales", count: 0 },
-    { name: "Doble Matrimonial", desc: "Camas Matrimoniales", count: 0 },
-    { name: "Triple Twin", desc: "Camas Individuales", count: 0 },
-    { name: "Triple Matrimonial", desc: "Camas Matrimoniales", count: 0 },
-    { name: "Cuádruple", desc: "Preguntar...", count: 0 }
-  ]);
+  const [roomTypes, setRoomTypes] = useState(() => createRoomTypes(initialRoomSlug));
   const phone = "5491140480054";
+
+  useEffect(() => {
+    setAdults(Math.max(1, initialAdults));
+    setChildren(0);
+    setRoomTypes(createRoomTypes(initialRoomSlug));
+    setOpen(null);
+    setRange(undefined);
+  }, [initialAdults, initialRoomSlug]);
 
   const handleSearch = () => {
     const selectedRooms = roomTypes

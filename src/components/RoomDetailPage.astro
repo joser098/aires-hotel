@@ -7,6 +7,8 @@ import { rooms } from "../data/rooms.js";
 const {
   eyebrow = "Aires Express",
   title = "Habitacion Doble",
+  roomSlug = "",
+  roomGuests = 2,
   heroImage = "/images/rooms/room.png",
   gallery = [],
   description = [],
@@ -67,7 +69,7 @@ const galleryImages = gallery.length > 0
             <p>Consulta disponibilidad y arma tu estadia desde aqui.</p>
           </div>
           <div class="booking-bar">
-            <SearchBar />
+            <SearchBar initialRoomSlug={roomSlug} initialAdults={roomGuests} />
           </div>
         </section>
 
