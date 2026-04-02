@@ -164,7 +164,7 @@ export const rooms = [
     title: "Triple Matrimonial",
     heroImage: getHeroImage("triple-matrimonial"),
     gallery: getRoomGallery("triple-matrimonial"),
-    short_description: "Habitación para 3 personas individual con cama matrimonial, una cama individual y baño privado.",
+    short_description: "Habitacion para 3 personas con cama matrimonial, una cama individual y baño privado.",
     description: [
       "Habitación para 3 personas con cama Matrimonial y 1 cama individual, ideal para una estadía cómoda y tranquila. Cuenta con baño privado con agua fría y caliente, toallas, secador de pelo y artículos de tocador de cortesía. Dispone de aire acondicionado y calefacción para garantizar confort en cualquier época del año. Además, incluye conexión WiFi y televisión por cable para tu entretenimiento.",
       "Desayuno incluido y recepción disponible las 24 horas. Espacios comunes con jardín para relajarse durante tu estadía. Estacionamiento disponible a 150 metros con costo adicional. Ubicación estratégica con acceso a transporte público, incluyendo cercanía al subte.",
@@ -219,7 +219,7 @@ export const rooms = [
     gallery: getRoomGallery("monoambiente"),
     short_description: "Habitación para cuatro personas con una cama matrimonial y dos camas individuales, ideal para familias o grupos.",
     description: [
-      "Monoambiente para cuatro personas, ideal para quienes buscan mayor independencia y comodidad. Cuenta con cama matrimonial y sofá cama, además de baño privado con agua fría y caliente, toallas, secador de pelo y artículos de tocador de cortesía. Dispone de aire acondicionado y calefacción para garantizar confort en cualquier época del año, junto con conexión WiFi y televisión por cable.",
+      "Monoambiente para cuatro personas, ideal para quienes buscan mayor independencia y comodidad. Cuenta con cama matrimonial y sofá cama para 2 personas, ideal para niños, además de baño privado con agua fría y caliente, toallas, secador de pelo y artículos de tocador de cortesía. Dispone de aire acondicionado y calefacción para garantizar confort en cualquier época del año, junto con conexión WiFi y televisión por cable.",
       "Incluye cocina equipada con nevera, microondas y vajilla, permitiendo una estadía más práctica y funcional. Además, cuenta con balcón, brindando un espacio adicional para disfrutar.",
       "Desayuno incluido y recepción disponible las 24 horas. Espacios comunes con jardín para relajarse durante tu estadía. Estacionamiento disponible a 150 metros con costo adicional. Ubicación estratégica con acceso a transporte público, incluyendo cercanía al subte.",
       "Rodeado de restaurantes, bares, parques y museos, ideal para disfrutar la ciudad.",
