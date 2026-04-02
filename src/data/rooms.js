@@ -64,7 +64,7 @@ export const rooms = [
     title: "Single",
     heroImage: getHeroImage("single"),
     gallery: getRoomGallery("single"),
-    short_description: "Habitación individual con cama matrimonial y baño privado.",
+    short_description: "Habitación para 1 persona con cama matrimonial o individual de acuerdo a la disponibilidad y baño privado.",
     description: [
       "Habitación individual con cama matrimonial, ideal para una estadía cómoda y tranquila. Cuenta con baño privado con agua fría y caliente, toallas, secador de pelo y artículos de tocador de cortesía. Dispone de aire acondicionado y calefacción para garantizar confort en cualquier época del año. Además, incluye conexión WiFi y televisión por cable para tu entretenimiento.",
       "Desayuno incluido y recepción disponible las 24 horas. Espacios comunes con jardín para relajarse durante tu estadía. Estacionamiento disponible a 150 metros con costo adicional. Ubicación estratégica con acceso a transporte público, incluyendo cercanía al subte.",

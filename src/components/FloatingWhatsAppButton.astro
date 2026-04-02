@@ -17,8 +17,7 @@ const whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`;
   rel="noopener noreferrer"
   aria-label="Contactar por WhatsApp"
 >
-  <MessageCircle size={22} />
-  <span>Reservá ahora</span>
+  <img src="/whatsapplogo.png" alt="WhatsApp" width="56" height="56" />
 </a>
 
 <style>
@@ -31,7 +30,7 @@ const whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`;
     align-items: center;
     gap: 8px;
     border-radius: 999px;
-    padding: 12px 16px;
+    padding: 8px;
     background: #25d366;
     color: #fff;
     font-weight: 700;
@@ -58,7 +57,7 @@ const whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`;
     .floating-whatsapp {
       right: 14px;
       bottom: 14px;
-      padding: 11px 14px;
+      /* padding: 11px 14px; */
       font-size: 13px;
       gap: 6px;
     }
